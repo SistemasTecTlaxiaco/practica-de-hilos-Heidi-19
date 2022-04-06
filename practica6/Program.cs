@@ -10,16 +10,23 @@ namespace practica6
     {
         static void Main(String[] args)
         {
-            //Crear hilo
-            Thread t = new Thread(metodo);
-
-            //Escribir mil veces el caracter x
-            for(int i = 0; i < 1000; i++)
-                Console.WriteLine("x");
+            //Crear hilo          expresión blanda
+            Thread t = new Thread(()=>go("Programación con hilos","Es facil!!!"));
+            t.Start();
+            Console.WriteLine("Hilo finalizado");
+            Console.Read();
         }
 
-        static void metodo()
+        static void go(string str1, string str2)
         {
+            Console.WriteLine(str1);
+            Console.WriteLine(str2);
+        }
+
+        static void metodo(object o)
+        {
+            //Imprimir objeto
+            Console.WriteLine(o.ToString());
             //Escribir mil veces el caracter y
             for(int i = 0; i < 1000; i++)
                 Console.WriteLine("y");
